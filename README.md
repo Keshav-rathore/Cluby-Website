@@ -27,7 +27,6 @@ Opportunities
    - **Club Representative Dashboard**: Allows club representatives to post events, manage members, and track engagement.
    - **Student Dashboard**: Students can view their club memberships, application statuses, and notifications about upcoming events and opportunities.
 
- silent Features
  Real-Time Notifications:
    - Students and club representatives receive notifications about important updates, new opportunities, or upcoming events. This ensures users don’t miss important activities.
   
