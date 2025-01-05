@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="shortcut icon" href="/Frontend/public/Images/Cluby_Icon.png" type="image/x-icon">
+    <link href="/tailwind/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="/Frontend/public/Images/Cluby_Icon.png" alt="Cluby Logo" class="h-10 w-10 mr-2">
+            <h1 class="text-3xl font-bold text-gray-800">Cluby</h1>
+        </div>
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a href="/Frontend/src/pages/Landing.html" class="text-blue-600 hover:text-blue-900">Home</a></li>
+                <li><a href="/Frontend/src/pages/Login.html" class="text-blue-600 hover:text-blue-900"><button
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
+                            type="button">Sign In</button></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+        <div class="max-w-md w-full bg shadow-xl rounded-lg p-8">
+            <h2 class="text-2xl font-bold text-center text-blue-500 mb-6">Register on Cluby</h2>
+            <form id="register-form">
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="name"
+                        class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        required placeholder="Enter your Full Name">
+                    <p id="name-error" class="text-red-500 text-xs mt-2 hidden">Name is required.</p>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input type="email" id="email"
+                        class="w-full mt-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                        required placeholder="Enter your Email address">
+                    <p id="email-error" class="text-red-500 text-xs mt-2 hidden">Invalid or already registered email.
+                    </p>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                    <div class="relative flex items-center mt-2">
+                        <input type="password" id="password"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            required placeholder="Enter your Password">
+                        <span class="absolute right-3 cursor-pointer text-gray-500" id="toggle-password"
+                            aria-label="Toggle Password Visibility">
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+                    </div>
+                    <p id="password-error" class="text-red-500 text-xs mt-2 hidden">Password must be at least 8
+                        characters long.</p>
+                </div>
+                <div class="mb-4">
+                    <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm
+                        Password</label>
+                    <div class="relative flex items-center mt-2">
+                        <input type="password" id="confirm-password"
+                            class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                            placeholder="Confirm Password" required>
+                        <span class="absolute right-3 cursor-pointer text-gray-500" id="toggle-confirm-password">
+                            <i class="fa-solid fa-eye"></i>
+                        </span>
+                    </div>
+                    <p id="confirm-password-error" class="text-red-500 text-xs mt-2 hidden">Passwords do not match.</p>
+                </div>
+                <button type="submit"
+                    class="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2">
+                    Register
+                </button>
+            </form>
+            <p class="text-center p-4">
+                Already have an account?
+                <a class="text-blue-500 hover:underline" href="/Frontend/src/pages/login.html">Login</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Function to store user data in localStorage
+        function storeUserToLocalStorage(user) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        // Function to retrieve users from localStorage
+        function getUsersFromLocalStorage() {
+            return JSON.parse(localStorage.getItem('users')) || [];
+        }
+
+        // Toggle password visibility
+        function toggleVisibility(elementId) {
+            const element = document.getElementById(elementId);
+            const toggleIcon = document.getElementById(`toggle-${elementId}`);
+            if (element.type === 'password') {
+                element.type = 'text';
+                toggleIcon.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+            } else {
+                element.type = 'password';
+                toggleIcon.innerHTML = '<i class="fa-solid fa-eye"></i>';
+            }
+        }
+
+        document.getElementById('toggle-password').addEventListener('click', function () {
+            toggleVisibility('password');
+        });
+        document.getElementById('toggle-confirm-password').addEventListener('click', function () {
+            toggleVisibility('confirm-password');
+        });
+
+        // Form submission logic
+        document.getElementById('register-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            // Get form values
+            const fullName = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Clear previous errors
+            document.getElementById('name-error').classList.add('hidden');
+            document.getElementById('email-error').classList.add('hidden');
+            document.getElementById('password-error').classList.add('hidden');
+            document.getElementById('confirm-password-error').classList.add('hidden');
+
+            if (!fullName || !email || !password || !confirmPassword) {
+                // Show error for empty fields
+                isValid = false;
+                if (!fullName) document.getElementById('name-error').classList.remove('hidden');
+                if (!email) document.getElementById('email-error').classList.remove('hidden');
+                if (!password) document.getElementById('password-error').classList.remove('hidden');
+                if (!confirmPassword) document.getElementById('confirm-password-error').classList.remove('hidden');
+            }
+
+
+            // Validate inputs
+            let isValid = true;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email-error').innerText = "Invalid email format.";
+                document.getElementById('email-error').classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Validate password length
+            if (password.length < 8) {
+                document.getElementById('password-error').classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                document.getElementById('confirm-password-error').classList.remove('hidden');
+                isValid = false;
+            }
+
+            // Check if email already exists
+            const users = getUsersFromLocalStorage();
+            if (users.some(user => user.email === email)) {
+                document.getElementById('email-error').innerText = "Email already registered.";
+                document.getElementById('email-error').classList.remove('hidden');
+                isValid = false;
+            }
+
+            // If form is valid, save user
+            if (isValid) {
+                const newUser = { fullName, email, password, role: "student" };
+                document.getElementById('email-error').classList.add('hidden');
+                document.getElementById('password-error').classList.add('hidden');
+                document.getElementById('confirm-password-error').classList.add('hidden');
+                document.getElementById('name-error').classList.add('hidden');
+
+                storeUserToLocalStorage(newUser);
+                document.getElementById('register-form').reset();
+                window.location.href = '/Frontend/src/pages/login.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

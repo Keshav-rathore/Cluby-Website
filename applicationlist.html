@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application List - Cluby</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 font-sans antialiased">
+
+  <!-- Header Section -->
+  <header class="bg-white shadow-md p-4 flex justify-between items-center">
+    <div class="flex items-center">
+      <img src="/Frontend/public/Images/Cluby_Icon.png" alt="Cluby Logo" class="h-10 w-10 mr-2">
+      <h1 class="text-3xl font-bold text-gray-800">Cluby</h1>
+    </div>
+    <nav>
+      <ul class="flex space-x-4">
+        <li><a href="/Frontend/src/pages/C_Dashboard.html" class="text-blue-600 hover:text-blue-900">Home</a></li>
+        <li><a href="/Frontend/src/pages/ClubList.html" class="text-blue-600 hover:text-blue-900">Find</a></li>
+        <li><a href="/Frontend/src/pages/Recruit.html" class="text-blue-600 hover:text-blue-900">Recruit</a></li>
+        <li><a href="/Frontend/src/pages/Community.html" class="text-blue-600 hover:text-blue-900">Community</a></li>
+        <li><a href="/Frontend/src/pages/C_profile.html" class="flex items-center space-x-2 hover:text-blue-600">
+            <i class="fa fa-user-circle text-2xl"></i>
+          </a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="w-full p-6 space-y-6">
+    <h2 class="text-2xl font-semibold text-gray-800">Position Applications</h2>
+
+    <!-- Application List -->
+    <div class="space-y-4">
+      <!-- Sample Application 1 -->
+      <div class="bg-white shadow-md rounded-lg p-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xl font-semibold">Web Developer</h3>
+          <div class="flex space-x-4">
+            <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" onclick="viewApplicationDetails(1)">
+              View Details
+            </button>
+            <button class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" onclick="selectApplication(1)">
+              Select
+            </button>
+            <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700" onclick="rejectApplication(1)">
+              Reject
+            </button>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mt-2">Applicant: John Doe</p>
+        <p class="text-sm text-gray-600">Date Applied: 2025-01-01</p>
+      </div>
+
+      <!-- Application Detail Modal -->
+      <div id="applicationDetailModal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-lg w-full">
+          <h2 class="text-2xl font-semibold text-gray-800 mb-4" id="modalTitle">Application Details</h2>
+          <div class="space-y-3">
+            <p><strong class="text-gray-600">Applicant Name:</strong> <span id="applicantName" class="text-gray-800"></span></p>
+            <p><strong class="text-gray-600">Year:</strong> <span id="applicantYear" class="text-gray-800"></span></p>
+            <p><strong class="text-gray-600">Skills:</strong> <span id="applicantSkills" class="text-gray-800"></span></p>
+            <p><strong class="text-gray-600">Description:</strong> <span id="applicantDescription" class="text-gray-800"></span></p>
+            <p><strong class="text-gray-600">Date Applied:</strong> <span id="applicationDate" class="text-gray-800"></span></p>
+          </div>
+          <div class="flex justify-end space-x-4 mt-6">
+            <button type="button" class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800" onclick="closeModal()">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- Sample Application 2 -->
+      <div class="bg-white shadow-md rounded-lg p-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xl font-semibold">Graphic Designer</h3>
+          <div class="flex space-x-4">
+            <button  class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" onclick="viewApplicationDetails(2)">
+              View Details
+            </button>
+            <button  id="select2"class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700" onclick="selectApplication(2)">
+              Select
+            </button>
+            <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700" onclick="rejectApplication(2)">
+              Reject
+            </button>
+          </div>
+        </div>
+        <p class="text-sm text-gray-600 mt-2">Applicant: Jane Smith</p>
+        <p class="text-sm text-gray-600">Date Applied: 2025-01-02</p>
+      </div>
+
+      <!-- More applications can be added in a similar fashion -->
+    </div>
+  </main>
+
+  <script>
+
+const applications = {
+      1: {
+        name: 'Keshav Singh Rathore',
+        year: '2022-2026',
+        skills: 'JavaScript, React, Node.js',
+        description: 'Passionate about web development, loves building dynamic websites and web applications.',
+        date: '2025-01-01'
+      },
+      2: {
+        name: 'Avneesh Singh',
+        year: '2024',
+        skills: 'Photoshop, Illustrator, Graphic Design',
+        description: 'Creative graphic designer with a keen eye for visual aesthetics and branding.',
+        date: '2025-01-02'
+      }
+    };
+
+    // Function to open the application detail modal
+    function viewApplicationDetails(applicationId) {
+      const application = applications[applicationId];
+      document.getElementById('applicantName').innerText = application.name;
+      document.getElementById('applicantYear').innerText = application.year;
+      document.getElementById('applicantSkills').innerText = application.skills;
+      document.getElementById('applicantDescription').innerText = application.description;
+      document.getElementById('applicationDate').innerText = application.date;
+      document.getElementById('applicationDetailModal').classList.remove('hidden');
+      doceument.getElementById('modalTitle').classList.add("flex");
+    }
+
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById('applicationDetailModal').classList.add('hidden');
+    }
+
+    // Functions for select and reject
+    function selectApplication(applicationId) {
+        button = document.getElementById('select');
+        button.style.backgroundColor = "green";
+        button.style.color = "white";
+        button.innerText = "Selected";
+       
+      alert('Application with ID: ' + applicationId + ' has been selected.');
+    }
+
+    function rejectApplication(applicationId) {
+      alert('Application with ID: ' + applicationId + ' has been rejected.');
+    }
+  </script>
+    
+
+</body>
+
+</html>

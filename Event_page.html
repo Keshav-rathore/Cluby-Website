@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Detail Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+
+  <!-- Event Detail Container -->
+  <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+    <!-- Event Header -->
+    <header class="mb-6">
+      <h1 class="text-3xl font-bold text-blue-800">Club Annual Meet & Greet</h1>
+      <p class="text-gray-500">Hosted by: <a href="#" class="text-blue-600 hover:underline">Photography Club</a></p>
+    </header>
+
+    <!-- Event Details Section -->
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">Event Details</h2>
+      <p class="text-gray-700 mb-4">
+        Join us for our Annual Meet & Greet event where you can connect with club members, explore our upcoming projects, and enjoy fun activities. Don't miss out on this chance to engage with the creative community!
+      </p>
+      <div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 text-gray-700">
+        <img
+          src="/Frontend/public/Images/Event_poster.jpg"
+          alt="Event Poster"
+          class="w-24 h-36 object-cover rounded shadow"
+        />
+        <div class="space-y-2">
+          <div class="flex items-center space-x-2">
+            <span class="material-icons text-blue-600">Date</span>
+            <span class="font-semibold">March 15, 2024</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="material-icons text-blue-600">Time</span>
+            <span class="font-semibold">10:00 AM - 2:00 PM</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="material-icons text-blue-600">Location</span>
+            <span class="font-semibold">Main Auditorium</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">RSVP</h2>
+      <button class="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700" onclick="rsvpEvent()">
+        RSVP to Attend
+      </button>
+      <p id="rsvpMessage" class="text-green-600 mt-2 hidden">You have successfully RSVP'd to this event!</p>
+    </section>
+
+    
+    <!-- Related Links Section -->
+    <section>
+      <h2 class="text-xl font-semibold text-gray-800 mb-2">Related Links</h2>
+      <div class="flex space-x-4">
+        <a href="#" class="text-blue-600 hover:underline">More Events by Photography Club</a>
+        <a href="#" class="text-blue-600 hover:underline">Visit Club Page</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- JavaScript for RSVP Button -->
+  <script>
+    function rsvpEvent() {
+      // Placeholder function for RSVP action
+      const rsvpMessage = document.getElementById("rsvpMessage");
+      rsvpMessage.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>

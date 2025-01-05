@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add_Club</title>
+    <link href="/tailwind/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-gray-800">Club Submission Form</h1>
+    </header>
+
+    <main class="p-6 max-w-lg mx-auto">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Create a New Club</h2>
+        
+        <!-- Club Submission Form -->
+        <form id="clubForm" class="bg-white p-6 rounded-lg shadow-lg" method="POST" action="/submit-club">
+            <div class="mb-4">
+                <label for="clubName" class="block text-gray-700 font-bold mb-2">Club Name:</label>
+                <input type="text" id="clubName" name="clubName" required 
+                       class="border rounded-md p-2 w-full" placeholder="Enter club name">
+            </div>
+
+            <div class="mb-4">
+                <label for="clubDesc" class="block text-gray-700 font-bold mb-2">Short Description:</label>
+                <textarea id="clubDesc" name="clubDesc" required 
+                          class="border rounded-md p-2 w-full" placeholder="Enter a short description"></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="clubCategory" class="block text-gray-700 font-bold mb-2">Category:</label>
+                <select id="clubCategory" name="clubCategory" class="border rounded-md p-2 w-full">
+                    <option value="Technical">Technical</option>
+                    <option value="Cultural">Cultural</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Community Service">Community Service</option>
+                </select>
+            </div>
+
+            <!-- Club Image URL Field -->
+            <div class="mb-4">
+                <label for="clubImage" class="block text-gray-700 font-bold mb-2">Image URL:</label>
+                <input type="url" id="clubImage" name="clubImage" required 
+                       class="border rounded-md p-2 w-full" placeholder="Enter image URL">
+            </div>
+            <div class="mb-4">
+                <label for="Aboutus" class="block text-gray-700 font-bold mb-2">About Us</label>
+                <textarea type="te" id="Aboutus" name="Aboutus" required 
+                       class="border rounded-md p-2 w-full" placeholder="Enter image URL">
+                </textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center">
+                <button type="submit" class="bg-blue-500 text-white py-2 px-6 rounded hover:bg-blue-600">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script>
+        // Optional: Form submission using JavaScript
+        const form = document.getElementById('clubForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+            const clubData = {
+                clubName: formData.get('clubName'),
+                clubDesc: formData.get('clubDesc'),
+                clubCategory: formData.get('clubCategory'),
+                clubImage: formData.get('clubImage'),
+            };
+
+            // Example of how to send form data to the backend via fetch
+            fetch('/submit-club', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(clubData)
+            }).then(response => response.json())
+              .then(data => {
+                  alert('Club submitted successfully');
+                  form.reset();
+              })
+              .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
