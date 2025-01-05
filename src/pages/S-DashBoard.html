@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cluby Student Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Header -->
+    <<header class="bg-white shadow-md p-4 flex justify-between items-center">
+      <div class="flex items-center">
+        <img src="/Frontend/public/Images/Cluby_Icon.png" alt="Cluby Logo" class="h-10 w-10 mr-2">
+        <h1 class="text-3xl font-bold text-gray-800">Cluby</h1>
+      </div>
+      <nav>
+        <ul class="flex space-x-4">
+          <li><a href="/Frontend/src/pages/S-DashBoard.html" class="text-blue-600 hover:text-blue-900">Home</a></li>
+          <li><a href="/Frontend/src/pages/ClubList.html" class="text-blue-600 hover:text-blue-900">Find</a></li>
+          <li><a href="/Frontend/src/pages/Recruit.html" class="text-blue-600 hover:text-blue-900">Recruit</a></li>
+          <li><a href="/Frontend/src/pages/Community.html" class="text-blue-600 hover:text-blue-900">Community</a></li>
+          <li><a href="/Frontend/src/pages/C_profile.html" class="flex items-center space-x-2 hover:text-blue-600">
+              <i class="fa fa-user-circle text-2xl"></i>
+            </a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Dashboard Content -->
+    <div class="container mx-auto my-8 p-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Joined Clubs Section -->
+        <section class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+          <h2 class="text-xl font-semibold text-blue-900"><i class="fas fa-users mr-2"></i> Joined Clubs</h2>
+          <div class="mt-4 space-y-4">
+            <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition">
+              <p class="font-semibold">Coding Club</p>
+              <p class="text-sm text-gray-600">A community for coding enthusiasts.</p>
+              <a href="" class="text-blue-600 hover:underline text-sm">Visit Club Page</a>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition">
+              <p class="font-semibold">Photography Club</p>
+              <p class="text-sm text-gray-600">For students interested in photography.</p>
+              <a href="photography-club.html" class="text-blue-600 hover:underline text-sm">Visit Club Page</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Membership Requests Section -->
+        <section class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+          <h2 class="text-xl font-semibold text-blue-900"><i class="fas fa-tasks mr-2"></i> Membership Requests</h2>
+          <div class="mt-4 space-y-4">
+            <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition flex justify-between items-center">
+              <div>
+                <p class="font-semibold">Drama Club</p>
+                <p class="text-sm text-gray-600">Status: <span class="text-yellow-500">Pending</span></p>
+              </div>
+              <button class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition">Cancel Request</button>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition flex justify-between items-center">
+              <div>
+                <p class="font-semibold">Robotics Club</p>
+                <p class="text-sm text-gray-600">Status: <span class="text-green-500">Approved</span></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+          <h2 class="text-xl font-semibold text-blue-900"><i class="fas fa-calendar-alt mr-2"></i> Upcoming Events</h2>
+          <div class="mt-4 space-y-4">
+            <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition">
+              <p class="font-semibold">Hackathon 2023</p>
+              <p class="text-sm text-gray-600">Date: November 20, 2023 - 10:00 AM</p>
+              <p class="text-sm text-gray-600">Location: Main Auditorium</p>
+              <a href="hackathon.html" class="text-blue-600 hover:underline text-sm">View Event Details</a>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition">
+              <p class="font-semibold">Photo Walk</p>
+              <p class="text-sm text-gray-600">Date: December 5, 2023 - 8:00 AM</p>
+              <p class="text-sm text-gray-600">Location: Central Park</p>
+              <a href="photo-walk.html" class="text-blue-600 hover:underline text-sm">View Event Details</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Vacancy Application Status Section -->
+      <section class="mt-8 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+        <h2 class="text-xl font-semibold text-blue-900"><i class="fas fa-briefcase mr-2"></i> Vacancy Application Status</h2>
+        <div class="mt-4 space-y-4">
+          <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition flex justify-between items-center">
+            <div>
+              <p class="font-semibold">Role: Frontend Developer</p>
+              <p class="text-sm text-gray-600">Club: Coding Club</p>
+              <p class="text-sm text-gray-600">Status: <span class="text-yellow-500">Pending</span></p>
+            </div>
+            <button class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition">Withdraw Application</button>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition flex justify-between items-center">
+            <div>
+              <p class="font-semibold">Role: Photographer</p>
+              <p class="text-sm text-gray-600">Club: Photography Club</p>
+              <p class="text-sm text-gray-600">Status: <span class="text-green-500">Accepted</span></p>
+            </div>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition flex justify-between items-center">
+            <div>
+              <p class="font-semibold">Role: Event Coordinator</p>
+              <p class="text-sm text-gray-600">Club: Drama Club</p>
+              <p class="text-sm text-gray-600">Status: <span class="text-red-500">Rejected</span></p>
+            </div>
+            <button class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Reapply</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Notifications Section -->
+      <section class="mt-8 bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+        <h2 class="text-xl font-semibold text-blue-900"><i class="fas fa-bell mr-2"></i> Notifications</h2>
+        <div class="mt-4 space-y-4">
+          <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition flex justify-between items-center">
+            <p class="text-sm text-gray-800">New recruitment event in Coding Club.</p>
+            <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow hover:bg-gray-100 transition flex justify-between items-center">
+            <p class="text-sm text-gray-800">Photography Club approved your membership request.</p>
+            <button class="text-gray-500 hover:text-gray-700"><i class="fas fa-times"></i></button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+</body>
+</html>

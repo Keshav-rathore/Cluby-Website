@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruitment</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-md p-4 flex justify-between items-center">
+        <div class="flex items-center">
+            <img src="/Frontend/public/Images/Cluby_Icon.png" alt="Cluby Logo" class="h-10 w-10 mr-2">
+            <h1 class="text-3xl font-bold text-gray-800">Cluby</h1>
+        </div>
+        <nav>
+            <ul class="flex space-x-4">
+                <li><a href="/Frontend/src/pages/C_Dashboard.html" class="text-blue-600 hover:text-blue-900">Home</a>
+                </li>
+                <li><a href="/Frontend/src/pages/ClubList.html" class="text-blue-600 hover:text-blue-900">Find</a></li>
+                <li><a href="/Frontend/src/pages/Recruit.html" class="text-blue-600 hover:text-blue-900">Recruit</a>
+                </li>
+                <li><a href="/Frontend/src/pages/Community.html" class="text-blue-600 hover:text-blue-900">Community</a>
+                </li>
+                <li><a href="/Frontend/src/pages/C_profile.html"
+                        class="flex items-center space-x-2 hover:text-blue-600">
+                        <i class="fa fa-user-circle text-2xl"></i>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Recruitment Hero Section -->
+    <section class="bg-blue-600 text-white py-2">
+        <div class="container mx-auto text-center">
+            <h1 class="text-xl font-bold mb-2">Join a Club and Make a Difference</h1>
+            <p class="text-lg">Explore exciting roles in clubs that match your skills and interests.</p>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="container mx-auto px-6 py-4 mt-4">
+        <div class="flex items-center width-full space-x-4 mb-2">
+            <input type="text" id="search-bar" placeholder="Search role..."
+                class="border rounded-md p-2 w-full md:w-1/2" aria-label="Search clubs">
+            <div>
+                <label for="category-select" class="sr-only">Select role </label>
+                <select id="category-select" class="border rounded-md p-2">
+                    <option value="all">All Categories</option>
+                    <option value="Designer">Designer</option>
+                    <option value="Developer">Developer</option>
+                    <option value="Event Coordinator">Event Coordinator</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recruitment Opportunities Section -->
+    <section class="container mx-auto py-2">
+        <h2 class="text-2xl font-bold text-center  mb-4">Current Recruitment Opportunities</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- dynamically generate Recruitment Card -->
+        </div>
+    </section>
+    <!-- Application Modal -->
+    <div id="applyPostModal" class="hidden fixed inset-0 justify-center items-center bg-gray-800 bg-opacity-50">
+        <div class="bg-white p-6 rounded-lg w-full max-w-md">
+            <h2 class="text-xl font-bold mb-4">Apply for Post </h2>
+            <form id="applyPostForm">
+                <div class="mb-4">
+                    <label for="applicantName" class="block font-semibold">Name</label>
+                    <input type="text" id="applicantName" class="w-full border rounded p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="applicantEmail" class="block font-semibold">Email</label>
+                    <input type="email" id="applicantEmail" class="w-full border rounded p-2" required>
+                </div>
+                <div class="mb-4">
+                    <label for="applicationMessage" class="block font-semibold">Skills & Experience</label>
+                    <textarea id="applicationMessage" class="w-full border rounded p-2" required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="applicationMessage" class="block font-semibold">Why are you applying?</label>
+                    <textarea id="applicationMessage" class="w-full border rounded p-2" required></textarea>
+                </div>
+                <div class="flex justify-end space-x-4">
+                    <button type="button" class="px-4 py-2 bg-gray-400 text-white rounded"
+                        onclick="closeModal('applyPostModal')">Cancel</button>
+                    <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Apply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4 mt-2">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Cluby. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+
+        // Recruitment Data
+        const recruitmentData = [
+            {
+                logo: "/Frontend/public/Images/techclub_logo.jpeg",
+                name: "Tech Club",
+                description: "Looking for passionate developers to work on AI and robotics projects.",
+                role: "Developer",
+                skills: ["Python", "AI", "Robotics"],
+                deadline: "October 20, 2024",
+            },
+            {
+                logo: "/Frontend/public/Images/Art club.png",
+                name: "Art Club",
+                description: "Join our team of creatives and help plan our next exhibition.",
+                role: "Designer",
+                skills: ["Graphic Design", "Event Planning"],
+                deadline: "October 25, 2024",
+            },
+            {
+                logo: "/Frontend/public/Images/Sports club.jpeg",
+                name: "Sports Club",
+                description: "We are seeking event coordinators to manage our upcoming tournaments.",
+                role: "Event Coordinator",
+                skills: ["Event Management", "Leadership"],
+                deadline: "November 15, 2024",
+            },
+            {
+                logo: "/Frontend/public/Images/Art club.png",
+                name: "Graphic Club",
+                description: "Join our team of designers and help plan our next exhibition.",
+                role: "Designer",
+                skills: ["Graphic Design", "Event Planning"],
+                deadline: "October 25, 2024",
+            }
+        ];
+
+        //function to save the recruitment data to local storage
+        function storeData(recruitmentData) {
+            localStorage.setItem("recruitmentData", JSON.stringify(recruitmentData));
+        }
+
+        //function to retrieve the recruitment data from local storage
+        function retrieveData() {
+            const data = localStorage.getItem("recruitmentData");
+            return data ? JSON.parse(data) : [];
+        }
+
+        function filterRecruitments(searchTerm, category) {
+            const data = localStorage.getItem("recruitmentData");
+            const recruitments = data ? JSON.parse(data) : [];
+
+            const filteredRecruitments = recruitments.filter((recruitment) => {
+                // Search term should match role, skills, or club
+                const matchesSearch = recruitment.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    recruitment.skills.some(skill => skill.toLowerCase().includes(searchTerm.toLowerCase())) || recruitment.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+                // Category should strictly match role (when a specific category is selected)
+                const matchesCategory = category === "all" || category.toLowerCase() === recruitment.role.toLowerCase();
+                console.log("====== matchesCategory", matchesCategory, "   category.toLowerCase() ", category.toLowerCase(), "recruitment.role.toLowerCase()", recruitment.role.toLowerCase())
+                // Both search term and category should match
+                return matchesSearch && matchesCategory;
+            });
+            generateCards(filteredRecruitments);
+        }
+
+        function generateCards(recruitments) {
+            const recruitmentContainer = document.querySelector(".grid");
+            recruitmentContainer.innerHTML = "";
+
+            if (recruitments.length > 0) {
+                recruitments.forEach((recruitment) => {
+                    const card = `
+                <div class="bg-white shadow-md rounded-lg p-6">
+                    <img src="${recruitment.logo}" alt="${recruitment.name} Logo" class="h-16 w-16 mx-auto mb-4">
+                    <h3 class="text-xl font-semibold text-center mb-2">${recruitment.name}</h3>
+                    <p class="text-center text-gray-600 mb-4">${recruitment.description}</p>
+                    <ul class="text-gray-700">
+                        <li><strong>Role:</strong> ${recruitment.role}</li>
+                        <li><strong>Skills:</strong> ${recruitment.skills.join(", ")}</li>
+                        <li><strong>Deadline:</strong> ${recruitment.deadline}</li>
+                    </ul>
+                    <button onclick="openApplyModal('${recruitment.name}', '${recruitment.role}')" 
+                    class="mt-4 bg-blue-500 text-white px-6 py-2 rounded-md text-center hover:bg-blue-800">
+                    Apply Now</button>
+
+
+                </div>
+            `;
+                    recruitmentContainer.innerHTML += card;
+                });
+            } else {
+                recruitmentContainer.innerHTML = `<p class="text-gray-700 text-center">No recruitment opportunities match your search.</p>`;
+            }
+        }
+
+
+
+        // Event Listeners for Search and Filter
+        document.getElementById("search-bar").addEventListener("input", (e) => {
+            const searchTerm = e.target.value;
+            const category = document.getElementById("category-select").value;
+            filterRecruitments(searchTerm, category);
+        });
+
+        document.getElementById("category-select").addEventListener("change", (e) => {
+            const category = e.target.value;
+            const searchTerm = document.getElementById("search-bar").value;
+            filterRecruitments(searchTerm, category);
+        });
+
+        function openApplyModal(clubName, role) {
+            // Store the club name and role in hidden inputs or variables for later use
+            document.getElementById("applyPostForm").dataset.clubName = clubName;
+            document.getElementById("applyPostForm").dataset.role = role;
+
+            // Open the modal
+            document.getElementById("applyPostModal").classList.remove("hidden");
+            document.getElementById("applyPostModal").classList.add("flex");
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add("hidden");
+        }
+        document.getElementById("applyPostForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
+
+            const clubName = e.target.dataset.clubName;
+            const role = e.target.dataset.role;
+            const applicantName = document.getElementById("applicantName").value;
+            const applicantEmail = document.getElementById("applicantEmail").value;
+            const applicationMessage = document.getElementById("applicationMessage").value;
+
+            // Create application object
+            const application = {
+                clubName,
+                role,
+                applicantName,
+                applicantEmail,
+                applicationMessage,
+                appliedAt: new Date().toISOString()
+            };
+
+            // Save application data to local storage
+            let applications = JSON.parse(localStorage.getItem("applications")) || [];
+            applications.push(application);
+            localStorage.setItem("applications", JSON.stringify(applications));
+
+            // Close the modal and show a success message
+            closeModal("applyPostModal");
+            alert(`Thank you, ${applicantName}! Your application for the ${role} role in ${clubName} has been submitted.`);
+
+            // Clear the form inputs
+            e.target.reset();
+        });
+
+
+        window.onload = function () {
+            storeData(recruitmentData);
+            generateCards(recruitmentData);
+        };
+    </script>
+</body>
+
+</html>
